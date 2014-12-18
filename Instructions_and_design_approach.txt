@@ -1,0 +1,22 @@
+This assignment is written in Ruby.
+To solve this problem, I have used the "Trie data structure". This data structure, even though needs more memory than trees and lists, in this special case
+involving limited alphabets and high redundancy, its more optimized for performance.
+
+The implementation is in the file find_longest_word.rb.
+This makes use of the fast_trie gem that comes with ruby.
+
+Before executing the ruby file, run the following command
+sudo gem install "fast_trie"
+
+The example provided is in the file actual_words_for_problem.txt
+
+- Going back to the implementation, object for the class is created first and the desired file is loaded by
+list.read_file("actual_words_for_problem.txt")
+
+Design motivation :
+1) Fast trie data structure is used because it can fan-out equal to the number of possible values of the data type.
+in this case it will be 26 i.e. 26 alphabets
+2) the list is arranged in descending order by length
+3) Taking the first string, loop over the sorted strings by checking if it can be made of other words by dividing them in all possible combinations
+4) Concatenated values found are then pushed into a new list, and the first and second longest are accessed
+5) Count of concatenated values will be the size of the new list.
