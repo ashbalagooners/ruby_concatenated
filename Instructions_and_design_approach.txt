@@ -1,4 +1,3 @@
-This assignment is written in Ruby.
 To solve this problem, I have used the "Trie data structure". This data structure, even though needs more memory than trees and lists, in this special case
 involving limited alphabets and high redundancy, its more optimized for performance.
 
