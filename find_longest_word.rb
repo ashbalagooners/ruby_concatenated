@@ -23,6 +23,14 @@ class LongestConcatenatedWords
     end
   end
 
+  # Method to compute time it takes to construct the trie and then do a lookup
+  def time
+    start = Time.now.to_f
+    yield
+    puts "Computation time is:\n"
+    puts Time.now.to_f - start
+  end
+
   def lookup_longest_concatenatedword
     @sortedWordList = sorted_list_by_length(@wordList)
     @sortedWordList.each do |word|
@@ -34,7 +42,12 @@ class LongestConcatenatedWords
           @longestConcatWord = word
         end
          @newsortedlist.push(word)
-         @newsortedlist = sorted_list_by_length(@newsortedlist)
+
+         # Optimizing the lookup by removing an unnecessary callback to sort by length method after fetching the concatenated word from list
+         # The main reason is the list is already sorted at the start of lookup and its sufficient to do it just once
+
+         # @newsortedlist = sorted_list_by_length(@newsortedlist)
+
          @secondlongestConcatWord = @newsortedlist[1]
       end
       @trie.add(word,1)
@@ -77,6 +90,7 @@ private
 end
 
 list = LongestConcatenatedWords.new
+list.time do
 list.read_file("actual_words_for_problem.txt")
 list.lookup_longest_concatenatedword
-
+end
