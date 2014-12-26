@@ -91,6 +91,6 @@ end
 
 list = LongestConcatenatedWords.new
 list.time do
-list.read_file("actual_words_for_problem.txt")
-list.lookup_longest_concatenatedword
+    list.read_file("actual_words_for_problem.txt")
+    list.lookup_longest_concatenatedword
 end
